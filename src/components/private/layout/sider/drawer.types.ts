@@ -1,5 +1,5 @@
-export type TMenuItem = {
+export type TDesktopMenuItem = {
   key: string;
   label: string;
-  children?: TMenuItem[];
+  children?: TDesktopMenuItem[];
 };

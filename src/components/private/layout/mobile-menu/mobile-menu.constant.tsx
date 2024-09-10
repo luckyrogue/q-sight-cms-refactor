@@ -1,10 +1,12 @@
 import { MenuProps } from "antd";
+import { HomeOutlined } from "@ant-design/icons";
 type MenuItem = Required<MenuProps>["items"][number];
 
-export const DRAWER_CONSTANT: MenuItem[] = [
+export const MOBILE_MENU_CONSTANT: MenuItem[] = [
   {
     key: "drawer.administration",
     label: "drawer.administration",
+    icon: <HomeOutlined />,
     children: [
       {
         key: "/administration/organizations",
@@ -23,6 +25,7 @@ export const DRAWER_CONSTANT: MenuItem[] = [
   {
     key: "drawer.checklists",
     label: "drawer.checklists",
+    icon: <HomeOutlined />,
     children: [
       {
         key: "/check-list/templates",
@@ -35,8 +38,14 @@ export const DRAWER_CONSTANT: MenuItem[] = [
     ],
   },
   {
+    key: 'mobile-menu.user',
+    label: 'mobile-menu.user',
+    icon: <HomeOutlined />,
+  },
+  {
     key: "drawer.photo_results",
     label: "drawer.photo_results",
+    icon: <HomeOutlined />,
     children: [
       {
         key: "/photo-report/templates",
@@ -51,5 +60,6 @@ export const DRAWER_CONSTANT: MenuItem[] = [
   {
     key: "/visits-log/attendance/list",
     label: "drawer.attendance_journal",
+    icon: <HomeOutlined />,
   },
 ];
