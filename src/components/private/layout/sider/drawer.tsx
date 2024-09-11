@@ -23,10 +23,7 @@ export const Drawer = () => {
   });
 
   return (
-    <Sider
-      width="16rem"
-      style={{ backgroundColor: "white" }}
-    >
+    <Sider width="16rem" style={{ backgroundColor: "white" }}>
       <Menu mode="inline" items={translatedDrawer} />
       <UserProfile />
     </Sider>

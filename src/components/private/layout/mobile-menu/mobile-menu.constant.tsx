@@ -38,8 +38,8 @@ export const MOBILE_MENU_CONSTANT: MenuItem[] = [
     ],
   },
   {
-    key: 'mobile-menu.user',
-    label: 'mobile-menu.user',
+    key: "mobile-menu.user",
+    label: "mobile-menu.user",
     icon: <HomeOutlined />,
   },
   {
