@@ -1,59 +1,73 @@
-import { App, Form, Input, Button } from "antd";
+import { Form, Input, Button } from "antd";
 import { useState } from "react";
 import { useMutateSignInData } from "@/components/auth/sign-in/sign-in-form/sign-in-form.services";
 import { TSignInData } from "@/components/auth/sign-in/sign-in-form/sign-in-form.types.ts";
+import { useTranslation } from "react-i18next";
+import {
+  emailRules,
+  passwordRules,
+} from "@/components/auth/sign-in/sign-in-form/sign-in-form.rules.ts";
 
 export const SignInForm = () => {
-  const { notification } = App.useApp();
+  const { t } = useTranslation();
+
+  const translatedEmailRules = emailRules.map((rule) => {
+    return {
+      ...rule,
+      message: t((rule as any).message),
+    };
+  });
+
+  const translatedPasswordRules = passwordRules.map((rule) => {
+    return {
+      ...rule,
+      message: t((rule as any).message),
+    };
+  });
 
   const [signInData, setSignInData] = useState<TSignInData>({
-    email: "",
+    username: "",
     password: "",
   });
 
   const { mutateAsync, isPending } = useMutateSignInData(signInData);
 
   const onFinish = async (values: TSignInData) => {
-    try {
-      setSignInData(values);
-      await mutateAsync();
-    } catch (error: unknown) {
-      notification.error({
-        message: "Error",
-        description: (error as Error).message,
-      });
-    }
+    setSignInData(values);
+    await mutateAsync();
   };
 
   return (
-    <div className="max-w-96 m-auto">
-      <Form
-        name="signin"
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
-        layout="vertical"
+    <Form
+      name="signin"
+      initialValues={{ remember: true }}
+      onFinish={onFinish}
+      layout="vertical"
+    >
+      <Form.Item
+        label={t("sign-in-form.email")}
+        name="username"
+        rules={translatedEmailRules}
       >
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
-        >
-          <Input placeholder="Email" />
-        </Form.Item>
+        <Input disabled={isPending} placeholder="321321321@test.com" />
+      </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
-        >
-          <Input.Password placeholder="Password" />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit" loading={isPending} block>
-            Sign In
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
+      <Form.Item
+        label={t("sign-in-form.password")}
+        name="password"
+        rules={translatedPasswordRules}
+      >
+        <Input.Password
+          disabled={isPending}
+          placeholder={t("sign-in-form.password")}
+        />
+      </Form.Item>
+
+      <Form.Item>
+        <Button type="primary" htmlType="submit" loading={isPending} block>
+          {t("sign-in-form.sign-in")}
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
