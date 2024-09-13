@@ -18,9 +18,11 @@ export const Drawer = () => {
     return {
       ...item,
       label: t(item.label),
+      key: item.key,
       children: item.children?.map((child: TDesktopMenuItem) => ({
         ...child,
         label: t(child.label),
+        key: child.key,
       })),
     };
   });
@@ -40,7 +42,9 @@ export const Drawer = () => {
           mode="inline"
           items={translatedDrawer}
           className="flex-grow"
-          onClick={(e) => navigate(e.key)}
+          onClick={(e) => {
+            navigate(e.key);
+          }}
         />
 
         <div className="flex-shrink-0 p-4">

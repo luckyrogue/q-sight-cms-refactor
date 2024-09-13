@@ -28,7 +28,7 @@ export const PrivateLayout: React.FC<TPrivateLayoutProps> = () => {
 
   if (loading) return <Loader />;
 
-  if (!isAuthenticated) return <Navigate to={"/auth/sign-in"} />;
+  // if (!isAuthenticated) return <Navigate to={"/auth/sign-in"} />;
 
   return (
     <ConfigProvider theme={customTheme} locale={localHandler(locale)}>

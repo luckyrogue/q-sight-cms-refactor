@@ -4,7 +4,7 @@ type MenuItem = Required<MenuProps>["items"][number];
 
 export const DRAWER_CONSTANT: MenuItem[] = [
   {
-    key: "layout.drawer.administration",
+    key: "/administration",
     label: "layout.drawer.administration",
     icon: <HomeOutlined />,
     children: [
@@ -23,7 +23,7 @@ export const DRAWER_CONSTANT: MenuItem[] = [
     ],
   },
   {
-    key: "layout.drawer.checklists",
+    key: "/check-list",
     label: "layout.drawer.checklists",
     icon: <HomeOutlined />,
     children: [
@@ -38,7 +38,7 @@ export const DRAWER_CONSTANT: MenuItem[] = [
     ],
   },
   {
-    key: "layout.drawer.photo_results",
+    key: "/photo-report",
     label: "layout.drawer.photo_results",
     icon: <HomeOutlined />,
     children: [

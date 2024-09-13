@@ -17,5 +17,11 @@ export const customTheme: ThemeConfig = {
     Layout: {
       siderBg: "white",
     },
+    Segmented: {
+      controlHeight: 50,
+      itemActiveBg: "#1677ff",
+      itemSelectedBg: "#1677ff",
+      itemSelectedColor: "white",
+    },
   },
 };
