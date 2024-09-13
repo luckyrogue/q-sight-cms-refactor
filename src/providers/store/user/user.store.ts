@@ -18,8 +18,25 @@ export const useUserStore = create<TUserState & TUserActions>()(
         set({ loading: true, error: null });
         try {
           const user = await fetchUserData();
+          const completeUser = {
+            id: Number(user.id),
+            firstName: user.firstName || "",
+            lastName: user.lastName || "",
+            middleName: user.middleName || "",
+            phoneNumber: user.phoneNumber || "",
+            photoUrl: user.photoUrl || "",
+            email: user.email || "",
+            position: user.position || "",
+            positionName: user.positionName || "",
+            roles: user.roles || [],
+            unitAdminId:
+              typeof user.unitAdminId === "number" ? user.unitAdminId : null,
+            units: user.units || [],
+            companyList: user.companyList || [],
+            placeIds: user.placeIds || [],
+          };
           set({
-            user,
+            user: completeUser,
             isAuthenticated: true,
             loading: false,
           });

@@ -1,26 +1,28 @@
 import { Col, Layout, Row, Select } from "antd";
 import { useState } from "react";
+import { useUserStore } from "@/providers/store/user/user.store.ts";
 
 const { Header } = Layout;
 
 export const SystemBar = () => {
-  const [company, setCompany] = useState("Company#1");
+  const { user } = useUserStore();
+  const [company, setCompany] = useState(user?.companyList[0].id);
+  const companyOptionsList = user?.companyList.map((company) => ({
+    label: company.name,
+    value: company.id,
+  }));
 
   return (
     <Header className="flex justify-end items-center h-20 px-4 bg-transparent">
-      <Row gutter={16} justify="end">
+      <Row justify="end">
         <Col>
           <Select
-            size="large"
+            className="w-64"
             defaultValue={company}
             onChange={(value) => {
               setCompany(value);
             }}
-            options={[
-              { label: "Company#1", value: "Company#1" },
-              { label: "Company#2", value: "Company#2" },
-              { label: "Company#3", value: "Company#3" },
-            ]}
+            options={companyOptionsList}
           />
         </Col>
       </Row>

@@ -1,21 +1,9 @@
 import { https } from "@/api/api.base.ts";
+import { TUser } from "@/providers/store/user/user.types.ts";
 
-export const fetchUserData = async (): Promise<{
-  id: string;
-  name: string;
-  email: string;
-}> => {
+export const fetchUserData = async (): Promise<TUser> => {
   try {
     const { data } = await https.get("/organization/v1/users/me");
-    return data;
-  } catch (e) {
-    throw new Error(String(e));
-  }
-};
-
-export const fetchUserPermissions = async (): Promise<any[]> => {
-  try {
-    const { data } = await https.get("/organization/v1/users/permissions");
     return data;
   } catch (e) {
     throw new Error(String(e));

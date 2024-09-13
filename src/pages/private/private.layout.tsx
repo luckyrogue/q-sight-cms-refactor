@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { localHandler } from "@/utils/locale-handler/local-handler.util";
 import { useLocaleStore } from "@/providers/store/locale/locale.store.ts";
 import { Loader } from "@/components/global/loader/loader.tsx";
-import {customTheme} from "@/theme/theme.config.ts";
+import { customTheme } from "@/theme/theme.config.ts";
 
 const { Content } = Layout;
 

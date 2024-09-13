@@ -17,7 +17,7 @@ export const DRAWER_CONSTANT: MenuItem[] = [
         label: "layout.drawer.structure_org",
       },
       {
-        key: "/administration/personnel/list",
+        key: "/administration/employees",
         label: "layout.drawer.employees_positions",
       },
     ],

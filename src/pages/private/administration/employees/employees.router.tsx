@@ -1,5 +1,5 @@
 import { EmployeesListRoute } from "@/pages/private/administration/employees/list/employees-list.route.tsx";
-import {EmployeesCreateRoute} from "@/pages/private/administration/employees/[create]/employees-create.route.tsx";
+import { EmployeesCreateRoute } from "@/pages/private/administration/employees/[create]/employees-create.route.tsx";
 
 export const EmployeesRouter = [
   {
@@ -13,9 +13,9 @@ export const EmployeesRouter = [
         path: ":id",
       },
       {
-        path: 'create',
+        path: "create",
         element: <EmployeesCreateRoute />,
-      }
+      },
     ],
   },
 ];
