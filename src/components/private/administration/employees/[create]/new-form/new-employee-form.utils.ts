@@ -1,0 +1,3 @@
+const scheduleObserver = (weekday: string) {
+    
+}
