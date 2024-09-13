@@ -14,5 +14,8 @@ export const customTheme: ThemeConfig = {
     DatePicker: {
       controlHeight: 48,
     },
+    Segmented: {
+      controlHeight: 48,
+    },
   },
 };

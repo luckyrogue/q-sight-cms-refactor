@@ -5,4 +5,5 @@ export type TQueryParametersObserverProps = {
   query?: string;
   page: number;
   size: number;
+  [key: string]: string | number | undefined;
 };

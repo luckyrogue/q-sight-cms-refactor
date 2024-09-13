@@ -9,7 +9,5 @@ export const queryParametersObserver = (
     }
   }
 
-  return new URLSearchParams(
-    params as unknown as Record<string, string>,
-  ).toString();
+  return new URLSearchParams(params as Record<string, string>).toString();
 };

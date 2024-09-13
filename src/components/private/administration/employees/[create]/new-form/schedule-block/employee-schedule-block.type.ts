@@ -1,52 +1,24 @@
-import {Button, Col, Form, Row, Select, TimePicker} from "antd";
+import type { FormInstance } from "antd";
+import type { NotificationInstance } from "antd/es/notification/interface";
 
 export type TEmployeeScheduleBlockItemProps = {
-    index: number;
-    day: string;
-    time: [any, any];
-    weekdays: Array<{ label: string; value: string }>;
-    onDelete: (index: number) => void;
-    form: any;
+  index: number;
+  day: string;
+  time: [any, any];
+  weekdays: Array<{ label: string; value: string }>;
+  onDelete: () => void;
+  form: FormInstance;
+};
+
+export type TNewSchedule = {
+  day: string;
+  time: [string, string];
 }
 
-export const EmployeeScheduleBlockItem = (
-  props: TEmployeeScheduleBlockItemProps,
-) => {
-  return (
-    <Form form={form} layout="vertical" className="mb-4 w-full">
-      <Row gutter={16} align="middle">
-        <Col span={10}>
-          <Form.Item
-            name={`day_${index}`}
-            label="Дни недели"
-            initialValue={day}
-            rules={[{ required: true, message: "Выберите день недели" }]}
-            required
-          >
-            <Select
-              placeholder="Выберите день"
-              options={weekdays}
-              className="w-full"
-            />
-          </Form.Item>
-        </Col>
-        <Col span={10}>
-          <Form.Item
-            name={`time_${index}`}
-            label="Часы"
-            initialValue={time}
-            rules={[{ required: true, message: "Выберите время" }]}
-            required
-          >
-            <TimePicker.RangePicker className="w-full" format="HH:mm" />
-          </Form.Item>
-        </Col>
-        <Col span={4}>
-          <Button type="primary" danger block onClick={() => onDelete(index)}>
-            Удалить
-          </Button>
-        </Col>
-      </Row>
-    </Form>
-  );
-};
+export type TSetNewSchedule = (newSchedule: TNewSchedule[]) => void;
+
+export type TSyncScheduleWithForm = (newSchedule: TNewSchedule[], setNewSchedule: TSetNewSchedule, form: FormInstance) => void;
+
+export type TEmployeeAddDayScheduleHandler = (newSchedule: TNewSchedule[], setNewSchedule: TSetNewSchedule, form: FormInstance, notification: NotificationInstance) => void;
+
+export type TEmployeeDeleteDayHandler = (index: number, schedule: TNewSchedule[], setSchedule: TSetNewSchedule) => void;

@@ -4,12 +4,16 @@ import { employeesListTableColumns } from "@/pages/private/administration/employ
 import { useGetEmployeesList } from "@/pages/private/administration/employees/list/employees-list.services.ts";
 
 export const EmployeesListRoute = () => {
-  const { employees } = useGetEmployeesList();
+  const { employeesList, isEmployeesLoading } = useGetEmployeesList();
 
   return (
     <div>
       <AdministrationHeader />
-      <Table dataSource={employees} columns={employeesListTableColumns} />
+      <Table
+        dataSource={employeesList}
+        columns={employeesListTableColumns}
+        loading={isEmployeesLoading}
+      />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { https } from "@/api/api.base.ts";
 
 export const useGetEmployeesList = () => {
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["employees"],
     queryFn: async () => {
       const { data } = await https.get("/organization/v1/users");
@@ -12,6 +12,7 @@ export const useGetEmployeesList = () => {
     refetchOnWindowFocus: false,
   });
   return {
-    employees: data,
+    employeesList: data,
+    isEmployeesLoading: isLoading,
   };
 };
