@@ -6,6 +6,7 @@ import type {
   TUserActions,
 } from "@/providers/store/user/user.types.ts";
 import { storageHandler } from "@/providers/store/user/user.utils.ts";
+import $cookie from "js-cookie";
 
 export const useUserStore = create<TUserState & TUserActions>()(
   persist(
@@ -51,6 +52,8 @@ export const useUserStore = create<TUserState & TUserActions>()(
       },
       logout: () => {
         set({ user: null, isAuthenticated: false });
+        window.location.href = "/auth/sign-in";
+        $cookie.remove("accessToken");
       },
     }),
     {

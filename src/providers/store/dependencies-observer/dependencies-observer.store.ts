@@ -5,5 +5,9 @@ export const useDependenciesObserverStore = create<TDependenciesObserver>(
   (set) => ({
     companyId: null,
     setCurrentCompanyId: (companyId) => set(() => ({ companyId })),
+    unitNames: [],
+    setUnitNames: (unitNames) => set(() => ({ unitNames })),
+    positionNames: [],
+    setPositionNames: (positionNames) => set(() => ({ positionNames })),
   }),
 );

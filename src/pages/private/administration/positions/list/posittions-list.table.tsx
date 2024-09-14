@@ -1,28 +1,30 @@
-import { AdministrationActionsMenu } from "@/components/private/administration/general/actions-menu/administration-actions-menu.tsx";
+import {
+  AdministrationActionsMenu
+} from "@/components/private/administration/general/actions-menu/administration-actions-menu.tsx";
 
-export const employeesListTableColumns = [
+export const positionsListTableColumns = [
   {
-    title: "ФИО",
+    title: "Наименование",
     dataIndex: "fullName",
     key: "userName",
   },
   {
-    title: "Должность",
+    title: "Подразделение",
     dataIndex: "positionName",
     key: "userPosition",
   },
   {
-    title: "Подразделение",
+    title: "Кол-во людей",
     dataIndex: "unitName",
     key: "userUnit",
   },
   {
-    title: "Телефон",
+    title: "Модуль - Роль",
     dataIndex: "phoneNumber",
     key: "userPhone",
   },
   {
-    title: "Электронная почта",
+    title: "Моудли в моб.приложении - Роль",
     dataIndex: "email",
     key: "userEmail",
   },

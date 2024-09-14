@@ -1,10 +1,10 @@
 import { Button, Col, Row, Segmented } from "antd";
 import { ADMINISTRATION_ROUTES_MAPPING } from "@/pages/private/administration/administration.constants.ts";
 import { useLocation, useNavigate } from "react-router";
-import { useState } from "react";
+import React, { useState } from "react";
 import { FiltersModal } from "@/components/private/administration/employees/general/filters-modal/filters-modal.tsx";
 
-export const AdministrationHeader = () => {
+export const AdministrationHeader: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const route = (routeName: string) =>

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TPrivateLayoutProps } from "@/pages/private/private.types.ts";
-import { Navigate, Outlet } from "react-router";
+import { Outlet } from "react-router";
 import { App, ConfigProvider, Layout } from "antd";
 import { Drawer } from "@/components/private/layout/sider/drawer.tsx";
 import { SystemBar } from "@/components/private/layout/header/system-bar.tsx";
@@ -14,7 +14,7 @@ import { customTheme } from "@/theme/theme.config.ts";
 const { Content } = Layout;
 
 export const PrivateLayout: React.FC<TPrivateLayoutProps> = () => {
-  const { fetchUser, loading, isAuthenticated } = useUserStore((state) => ({
+  const { fetchUser, loading } = useUserStore((state) => ({
     isAuthenticated: state.isAuthenticated,
     fetchUser: state.fetchUser,
     loading: state.loading,
@@ -27,8 +27,6 @@ export const PrivateLayout: React.FC<TPrivateLayoutProps> = () => {
   }, [fetchUser]);
 
   if (loading) return <Loader />;
-
-  // if (!isAuthenticated) return <Navigate to={"/auth/sign-in"} />;
 
   return (
     <ConfigProvider theme={customTheme} locale={localHandler(locale)}>

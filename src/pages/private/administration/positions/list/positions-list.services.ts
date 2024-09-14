@@ -8,11 +8,11 @@ import { extractUniqueNames } from "@/utils/extract-units-names/extract-unique-n
 import { useState } from "react";
 import { extractUniquePositions } from "@/utils/extract-unique-positions/extract-unique-positions.util.ts";
 
-export const useGetEmployeesList = () => {
-  const { companyId, setUnitNames, setPositionNames } =
+export const useGetPositionsList = () => {
+  const { companyId } =
     useDependenciesObserverStore();
   const { message } = App.useApp();
-  const [employeesFilter, setEmployeesFilter] = useState<TEmployeesListFilter>({
+  const [positionsFilter, setPositionsFilter] = useState<TEmployeesListFilter>({
     companyId: companyId,
     positionId: "",
     unitId: "",

@@ -45,10 +45,7 @@ export const EmployeeInfoBlock = () => {
             </Col>
 
             <Col span={12}>
-              <Form.Item
-                label="Номер телефона"
-                name="phone"
-              >
+              <Form.Item label="Номер телефона" name="phone">
                 <InputMask
                   mask="+7 (999) 999-99-99"
                   placeholder="+7 (XXX) XXX-XX-XX"

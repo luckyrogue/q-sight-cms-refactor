@@ -13,12 +13,25 @@ export type TEmployeeScheduleBlockItemProps = {
 export type TNewSchedule = {
   day: string;
   time: [string, string];
-}
+};
 
 export type TSetNewSchedule = (newSchedule: TNewSchedule[]) => void;
 
-export type TSyncScheduleWithForm = (newSchedule: TNewSchedule[], setNewSchedule: TSetNewSchedule, form: FormInstance) => void;
+export type TSyncScheduleWithForm = (
+  newSchedule: TNewSchedule[],
+  setNewSchedule: TSetNewSchedule,
+  form: FormInstance,
+) => void;
 
-export type TEmployeeAddDayScheduleHandler = (newSchedule: TNewSchedule[], setNewSchedule: TSetNewSchedule, form: FormInstance, notification: NotificationInstance) => void;
+export type TEmployeeAddDayScheduleHandler = (
+  newSchedule: TNewSchedule[],
+  setNewSchedule: TSetNewSchedule,
+  form: FormInstance,
+  notification: NotificationInstance,
+) => void;
 
-export type TEmployeeDeleteDayHandler = (index: number, schedule: TNewSchedule[], setSchedule: TSetNewSchedule) => void;
+export type TEmployeeDeleteDayHandler = (
+  index: number,
+  schedule: TNewSchedule[],
+  setSchedule: TSetNewSchedule,
+) => void;
