@@ -1,18 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { https } from "@/api/api.base.ts";
-import { TEmployeesListFilter } from "@/pages/private/administration/employees/list/employees-list.types.ts";
+import type { TPositionsListFilter } from "@/pages/private/administration/positions/list/positions-list.types.ts";
 import { useDependenciesObserverStore } from "@/providers/store/dependencies-observer/dependencies-observer.store.ts";
 import { App } from "antd";
 import { errorHandler } from "@/utils/error-handler/error-handler.util.ts";
-import { extractUniqueNames } from "@/utils/extract-units-names/extract-unique-names.util.ts";
 import { useState } from "react";
-import { extractUniquePositions } from "@/utils/extract-unique-positions/extract-unique-positions.util.ts";
 
 export const useGetPositionsList = () => {
-  const { companyId } =
-    useDependenciesObserverStore();
+  const { companyId } = useDependenciesObserverStore();
   const { message } = App.useApp();
-  const [positionsFilter, setPositionsFilter] = useState<TEmployeesListFilter>({
+  const [positionsFilter, setPositionsFilter] = useState<TPositionsListFilter>({
     companyId: companyId,
     positionId: "",
     unitId: "",
@@ -21,17 +18,15 @@ export const useGetPositionsList = () => {
     size: 10,
   });
   const { data, isLoading, refetch } = useQuery({
-    queryKey: ["employees", employeesFilter],
+    queryKey: ["employees", positionsFilter],
     queryFn: async ({ queryKey }) => {
       try {
-        const [, employeesFilter] = queryKey;
-        const { data } = await https.get("/organization/v1/users", {
+        const [, positionsFilter] = queryKey;
+        const { data } = await https.get("/organization/v1/positions", {
           params: {
-            ...(employeesFilter as TEmployeesListFilter),
+            ...(positionsFilter as TPositionsListFilter),
           },
         });
-        setUnitNames(extractUniqueNames(data));
-        setPositionNames(extractUniquePositions(data));
         return data;
       } catch (error: any) {
         message.error(errorHandler(error));
@@ -43,9 +38,9 @@ export const useGetPositionsList = () => {
     refetchOnWindowFocus: false,
   });
   return {
-    employeesList: data,
-    isEmployeesLoading: isLoading,
-    refetchEmployeesList: refetch,
-    setEmployeesFilter,
+    positionsList: data,
+    isPositionsLoading: isLoading,
+    refetchPositionsList: refetch,
+    setPositionsFilter,
   };
 };

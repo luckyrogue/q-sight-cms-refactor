@@ -29,7 +29,11 @@ export const AdministrationActionsMenu: React.FC<Record<any, any>> = ({
       key: "EmployeeDelete",
       icon: <AppstoreAddOutlined />,
       label: (
-        <Button type="link" danger onClick={async() => await deleteEmployee(record?.id)}>
+        <Button
+          type="link"
+          danger
+          onClick={async () => await deleteEmployee(record?.id)}
+        >
           Удалить
         </Button>
       ),
@@ -37,7 +41,11 @@ export const AdministrationActionsMenu: React.FC<Record<any, any>> = ({
   ];
 
   return (
-    <Dropdown disabled={isDeleteEmployeePending} menu={{ items: actionsMenu }} trigger={["click"]}>
+    <Dropdown
+      disabled={isDeleteEmployeePending}
+      menu={{ items: actionsMenu }}
+      trigger={["click"]}
+    >
       <Button
         className="text-black"
         type="link"

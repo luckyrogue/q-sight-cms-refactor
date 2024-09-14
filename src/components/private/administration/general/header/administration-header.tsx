@@ -36,9 +36,12 @@ export const AdministrationHeader: React.FC = () => {
           />
         </Col>
         <Col span={3} offset={8}>
-          <Button type="primary" block onClick={() => setVisible(true)}>
-            Фильтры
-          </Button>
+          {ADMINISTRATION_ROUTES_MAPPING[location.pathname] ===
+            "Сотрудники" && (
+            <Button type="primary" block onClick={() => setVisible(true)}>
+              Фильтры
+            </Button>
+          )}
         </Col>
         <Col span={5}>
           <Button
