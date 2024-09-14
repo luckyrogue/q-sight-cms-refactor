@@ -12,4 +12,17 @@ export const DRAWER_LOCALE = {
       "layout.drawer.attendance_journal": "Журнал посещений",
     },
   },
+  kz: {
+    translation: {
+      "layout.drawer.administration": "Әкімшілік",
+      "layout.drawer.org_owners": "Ұйымдар мен иелері",
+      "layout.drawer.structure_org": "Ұйымның құрылымы",
+      "layout.drawer.employees_positions": "Қызметкерлер мен лауазымдар",
+      "layout.drawer.checklists": "Тексеру тізімдері",
+      "layout.drawer.checklists_templates": "Үлгілер",
+      "layout.drawer.photo_results": "Фото-есептер",
+      "layout.drawer.photo_results_templates": "Үлгілер мен бөлімдер",
+      "layout.drawer.attendance_journal": "Қатысу журналы",
+    },
+  },
 };

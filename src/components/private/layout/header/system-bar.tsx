@@ -1,7 +1,8 @@
 import { Col, Layout, Row, Select } from "antd";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useUserStore } from "@/providers/store/user/user.store.ts";
 import { useDependenciesObserverStore } from "@/providers/store/dependencies-observer/dependencies-observer.store.ts";
+import { LocaleMenu } from "@/components/global/locale-menu/locale-menu.tsx";
 
 const { Header } = Layout;
 
@@ -21,7 +22,10 @@ export const SystemBar = () => {
 
   return (
     <Header className="flex justify-end items-center h-20 px-4 bg-transparent">
-      <Row justify="end">
+      <Row gutter={16} align="middle" justify="end">
+        <Col>
+          <LocaleMenu />
+        </Col>
         <Col>
           <Select
             className="w-64"
