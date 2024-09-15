@@ -20,4 +20,8 @@ export const passwordRules: Rule[] = [
     min: 5,
     message: "sign-in-form.password-min",
   },
+  {
+    pattern: /[^а-яА-Я]/,
+    message: "Пароль не должен содержать кириллицу",
+  },
 ];

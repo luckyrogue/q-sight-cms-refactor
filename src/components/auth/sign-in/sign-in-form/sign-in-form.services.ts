@@ -23,7 +23,7 @@ export const useMutateSignInData = (
         .refreshToken;
       $cookie.set("accessToken", accessToken);
       $cookie.set("refreshToken", refreshToken);
-      navigate("/");
+      navigate("/administration/structure");
     },
     onError: (error) => {
       notification.error({

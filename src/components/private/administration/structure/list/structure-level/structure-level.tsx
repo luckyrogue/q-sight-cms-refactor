@@ -1,75 +1,56 @@
 import { useEffect, useState } from "react";
-import { Button, Input, Space, Spin } from "antd";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 import { StructureLevelItem } from "@/components/private/administration/structure/list/structure-level/item/structure-level-item.tsx";
 import { useGetCompanyStructure } from "@/components/private/administration/structure/list/structure-level/structure-level.services.ts";
+import { AddLevelForm } from "@/components/private/administration/structure/list/structure-level/add-level-form/add-level-form.tsx";
+import { findLastParentId } from "@/components/private/administration/structure/list/structure-level/structure-level.util.ts";
 
 export const StructureLevel = () => {
-    const { companyStructure } = useGetCompanyStructure();
-    const [structure, setStructure] = useState<any[]>([]);
-    const [isAdding, setIsAdding] = useState(false);
-    const [newLevelName, setNewLevelName] = useState("");
+  const { companyStructure } = useGetCompanyStructure();
+  const [structure, setStructure] = useState<any[]>([]);
+  const [isAdding, setIsAdding] = useState(false);
+  const [lastParentId, setLastParentId] = useState<number | null>(null);
 
-    useEffect(() => {
-        if (Array.isArray(companyStructure) && companyStructure.length > 0) {
-            setStructure(companyStructure);
-        } else {
-            setStructure([companyStructure]);
-        }
-    }, [companyStructure]);
+  useEffect(() => {
+    if (Array.isArray(companyStructure) && companyStructure.length > 0) {
+      setStructure(companyStructure);
+      setLastParentId(findLastParentId(companyStructure));
+    } else {
+      setStructure([companyStructure]);
+      setLastParentId(companyStructure?.id || null);
+      setIsAdding(false);
+    }
+  }, [companyStructure]);
 
-    const handleAddLevel = () => {
-        if (newLevelName) {
-            setStructure((prevStructure) => [
-                ...prevStructure,
-                { id: prevStructure.length + 1, name: newLevelName, level: prevStructure.length + 1 },
-            ]);
-            setNewLevelName("");
-            setIsAdding(false);
-        }
-    };
+  return (
+    <div className="border rounded-xl p-3 bg-white">
+      {Array.isArray(structure) &&
+        structure.length > 0 &&
+        structure.map((item) => (
+          <StructureLevelItem
+            key={item?.id}
+            structureData={item}
+            structureLevels={1}
+          />
+        ))}
 
-    const handleCancelAdd = () => {
-        setNewLevelName("");
-        setIsAdding(false);
-    };
-
-    return (
-        <div className="border rounded-xl p-3 bg-white">
-            {Array.isArray(structure) && structure.length > 0 && (
-                structure.map((item) => (
-                    <StructureLevelItem key={item?.id} structureData={item} structureLevels={1} />
-                ))
-            )}
-
-            {isAdding ? (
-                <div className="p-2">
-                    <Space className="w-full justify-between items-center">
-                        <Input
-                            value={newLevelName}
-                            onChange={(e) => setNewLevelName(e.target.value)}
-                            placeholder="Введите название уровня"
-                        />
-                        <Button
-                            type="default"
-                            icon={<CheckOutlined />}
-                            onClick={handleAddLevel}
-                            disabled={!newLevelName.trim()}
-                        />
-                        <Button type="default" danger icon={<CloseOutlined />} onClick={handleCancelAdd} />
-                    </Space>
-                </div>
-            ) : (
-                <Button
-                    type="primary"
-                    block
-                    className="mt-2"
-                    onClick={() => setIsAdding(true)}
-                    disabled={isAdding}
-                >
-                    Добавить уровень
-                </Button>
-            )}
-        </div>
-    );
+      {isAdding ? (
+        <AddLevelForm
+          parentId={lastParentId}
+          setIsAdding={setIsAdding}
+          handleCancelAdd={() => setIsAdding(false)}
+        />
+      ) : (
+        <Button
+          type="primary"
+          block
+          className="mt-2"
+          onClick={() => setIsAdding(true)}
+          disabled={isAdding}
+        >
+          Добавить уровень
+        </Button>
+      )}
+    </div>
+  );
 };

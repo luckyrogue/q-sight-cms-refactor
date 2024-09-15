@@ -21,7 +21,7 @@ export const SignInRoute = () => {
       </Col>
       <Col span={24}>
         <h2 className="text-xl font-bold text-center mb-4">
-          {t("auth.welcome")}
+          {t("sign-in-form.welcome")}
         </h2>
       </Col>
       <Col span={24}>
