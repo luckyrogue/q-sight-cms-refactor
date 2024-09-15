@@ -25,7 +25,7 @@ export const useMutateSignInData = (
       $cookie.set("refreshToken", refreshToken);
       navigate("/");
     },
-    onError: (error: unknown) => {
+    onError: (error) => {
       notification.error({
         message: "Ошибка",
         description: errorHandler(error),

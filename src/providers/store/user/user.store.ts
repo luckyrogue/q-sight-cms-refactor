@@ -52,7 +52,6 @@ export const useUserStore = create<TUserState & TUserActions>()(
       },
       logout: () => {
         set({ user: null, isAuthenticated: false });
-        window.location.href = "/auth/sign-in";
         $cookie.remove("accessToken");
       },
     }),
